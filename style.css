@@ -44,6 +44,7 @@ header,
 }
 
 .todo-list__item {
+    overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,5 +82,4 @@ header,
     margin-top: 5%;
     justify-content: center;
     display: flex;
-    
 }
