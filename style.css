@@ -77,3 +77,9 @@ header,
 .fa-check {
     pointer-events: none;
 }
+#header{
+    margin-top: 5%;
+    justify-content: center;
+    display: flex;
+    
+}
