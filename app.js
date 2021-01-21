@@ -10,30 +10,26 @@ todoList.addEventListener("click", deleteTodo);
 todoList.addEventListener("click", completeTodo);
 
 function addTodo() {
-  //get input value
   const todo = todoInput.value;
   if (!todo) return;
-  setLocalTodo(todo);
-  setTodo(todo);
-  //clear input value
+  const todoObject = {
+      name : todo,
+      complete: false
+  }
+  setLocalTodo(todoObject);
+  setTodo(todoObject);
   todoInput.value = "";
 }
 
 function deleteTodo(e) {
   const item = e.target;
   if (item.classList[0] == "delete") {
-    //get todos
     const todos = getLocalTodo();
-    //get parent element
     const parent = item.parentElement.parentElement;
-    //get text
     const span = parent.children[0].innerText;
-    //find index in todos
     const todoIndex = todos.indexOf(span);
-    // remo from todos and update in localstorage
     todos.splice(todoIndex, 1);
     localStorage.setItem("todos", JSON.stringify(todos));
-    //remove dom element
     parent.remove();
   }
 }
@@ -64,18 +60,18 @@ function setTodo(todo) {
   const todoEl = document.createElement("div");
   todoEl.classList.add("todo-list__item");
   const spanEl = document.createElement("span");
-  spanEl.textContent = todo;
+  spanEl.textContent = todo.name;
   const buttonsEl = document.createElement("div");
   buttonsEl.classList.add("todo-list_buttons");
 
-  // create complete button
+  
   const completeButton = document.createElement("button");
   completeButton.setAttribute("type", "button");
   completeButton.classList.add("complete");
   completeButton.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
   buttonsEl.append(completeButton);
 
-  // create delete button
+
   const deleteButton = document.createElement("button");
   deleteButton.setAttribute("type", "button");
   deleteButton.classList.add("delete");
