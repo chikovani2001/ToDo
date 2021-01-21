@@ -37,6 +37,9 @@ header,
     color: green;
     cursor: pointer;
 }
+.insert-todo button:hover{
+    border: 1px solid ;
+}
 
 .todo-list {
     margin-left: 25%;
